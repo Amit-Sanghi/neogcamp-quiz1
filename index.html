@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>neogcamp-quiz1</title>
+</head>
+<body>
+    var readlineSync = require("readline-sync");
+var score = 0;
+
+var userName = readlineSync.question("What is your name? ");
+console.log("welcome " + userName + " Do you Amit Kumar? ");
+
+function play(question,answer) {
+  var userans = readlineSync.question(question)
+
+  if (userans === answer){
+  score++;
+  console.log("right!");
+  } else {
+    console.log("wrong!");
+  }
+  console.log("current score: ", score)
+  console.log("----------------");
+}
+
+var highScores = [
+  {
+    name: "Amit",
+    score: 2,
+  },
+  {
+    name: "Darshika",
+    score: 1,
+  },
+]
+
+var questions = [{
+  question: "What is my age? ",
+  answer: "24"
+} , {
+  question: "Where do I live? ",
+  answer: "Jaipur"
+}];
+
+function game(){
+  for(var i=0; i<questions.length ; i++){
+  var current = questions[i];
+  play(current.question,current.answer);
+  }
+}
+
+function showscore() {
+  console.log("Hi! You SCORED: ", score);
+
+  console.log("Check out the high scores, if you are there then ping me and I'll update it");
+
+  highScores.map(score => console.log(score.name, " : ", score.score))
+}
+
+game();
+showscore();
+
+</body>
+</html>
